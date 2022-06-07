@@ -1,0 +1,80 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+
+body {
+  background: linear-gradient(#F0F4FF, #A5B6EE);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'pretendard';
+  font-weight: 700;
+}
+
+.app, .timer {
+  text-align: center;
+  margin: auto;
+}
+
+.app .weniv-logo {
+  margin: 72px 0;
+}
+
+.timer {
+  width: 400px;
+  background: linear-gradient(#5572BB, #374B7C);
+  border-radius: 16px;
+}
+
+.timer h2 {
+  margin: 48px auto 23px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+
+.timer .wraps-time {
+  margin: 32px 58px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hour span, .min span, .sec span {
+  font-size: 12px;
+  color: #A5B6EE;
+}
+
+.wraps-time .num-hour::after, 
+.wraps-time .num-min::after, 
+.wraps-time .num-sec::after {
+  content: "";
+  display: block;
+  background: no-repeat center/80px url(../images/box.png);
+  width: 80px;
+  height: 80px;
+}
+
+.wraps-time .dot {
+  width: 6px;
+  height: 26px;
+  margin-top: 21%;
+}
+
+.wraps-btn {
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 82px 40px;
+}
+
+.wraps-btn .btn-start {
+  margin-right: 12px;
+}
+
+.btn-start:hover, .btn-reset:hover {
+  cursor: pointer;
+}
+
+.copyright {
+  margin-top: 60px;
+}
