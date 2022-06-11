@@ -67,11 +67,11 @@ body {
   margin: 0 82px 40px;
 }
 
-.wraps-btn .btn-start {
+.wraps-btn .btn-disabled {
   margin-right: 12px;
 }
 
-.btn-start:hover, .btn-reset:hover {
+.btn-disabled:hover, .btn-reset-disabled:hover {
   cursor: pointer;
 }
 

@@ -3,7 +3,7 @@ const appendSeconds = document.querySelector(".num-sec");
 const appendMinutes = document.querySelector(".num-min");
 const appendHours = document.querySelector(".num-hour");
 
-const btnStart = document.querySelector('.btn-default');
+const btnStart = document.querySelector('.btn-disabled');
 const btnReset = document.querySelector('.btn-reset-disabled');
 
 let intervalId;
@@ -13,28 +13,37 @@ const src = './src/images/button/';
 btnStart.addEventListener('click', function(){
   
   // default에서 눌렀을 때 stop으로 변환
-  if( btnStart.id == 'btn-default'){
+  if( btnStart.id == 'btn-disabled' ){
     btnStart.src = `${src}pause.png`;
-    btnStart.id = "btn-stop";
-    
+    btnStart.id = "btn-pause";
+
+    btnReset.src = `${src}reset-default.png`
+    btnReset.id = 'btn-reset-default'
     start()
-  } else if (btnStart.id == 'btn-stop'){ // pause 일때 누르면 default로 변환
+
+  } else if( btnStart.id == 'btn-pause' ){ // pause 일때 누르면 default로 변환
     btnStart.src = `${src}start-default.png`;
-    btnStart.id = "btn-default";
+    btnStart.id = "btn-start";
+
     stop()
+  } else if( btnStart.id == 'btn-start' ) {
+    btnStart.src = `${src}pause.png`;
+    btnStart.id = "btn-pause";
+    start()
   }
 })
 
 // reset 버튼 눌렀을 때
-// btnReset.addEventListener('click', function(){
-//   if( btnReset.id == 'btn-reset-disabled'){
-//     btnReset.src = `${src}reset-default.png`;
-//     btnReset.id == 'btn-reset'
+btnReset.addEventListener('click', function(){
+  if( btnReset.id == 'btn-reset-default'){
+    btnReset.src = `${src}reset-disabled.png`;
+    btnReset.id = 'btn-reset-disabled'
 
-//   } else if( btnReset.id == 'btn-reset-default'){
-//     btnReset.src = `${src}reset-default.png`;
-//   }
-// })
+    btnStart.src = `${src}start-disabled.png`;
+    btnStart.id = "btn-disabled";
+    reset()
+  }
+})
 
 function timer() {
   seconds ++;
