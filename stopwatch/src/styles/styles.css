@@ -10,9 +10,13 @@ body {
   font-weight: 700;
 }
 
-.app, .timer {
-  text-align: center;
-  margin: auto;
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  flex-direction: column;
 }
 
 .app .weniv-logo {
@@ -21,8 +25,10 @@ body {
 
 .timer {
   width: 400px;
+  text-align: center;
   background: linear-gradient(#5572BB, #374B7C);
   border-radius: 16px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
 }
 
 .timer h2 {
@@ -41,15 +47,20 @@ body {
 }
 
 .hour span, .min span, .sec span {
+  display: block;
   font-size: 12px;
   color: #A5B6EE;
+  margin-bottom: 4px;
 }
 
-.wraps-time .num-hour::after, 
-.wraps-time .num-min::after, 
-.wraps-time .num-sec::after {
-  content: "";
-  display: block;
+.wraps-time .num-hour, 
+.wraps-time .num-min, 
+.wraps-time .num-sec  {
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 2;
+
   background: no-repeat center/80px url(../images/box.png);
   width: 80px;
   height: 80px;
@@ -58,7 +69,7 @@ body {
 .wraps-time .dot {
   width: 6px;
   height: 26px;
-  margin-top: 21%;
+  margin-top: 43px;
 }
 
 .wraps-btn {
