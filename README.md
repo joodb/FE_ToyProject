@@ -7,3 +7,6 @@
 - HTML Living Standard
 - CSS
 - JavaScript
+
+## **3. 배포**
+https://joodb.github.io/FE_ToyProject/ 에서 확인하실 수 있습니다.
