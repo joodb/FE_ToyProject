@@ -45,6 +45,7 @@ btnReset.addEventListener('click', function(){
   }
 })
 
+
 function timer() {
   seconds ++;
 
@@ -52,23 +53,17 @@ function timer() {
   let mins = Math.floor((seconds - hours * 3600 )/ 60);
   let secs = seconds % 60;
 
-  if( secs < 10 ){
-    appendSeconds.textContent = `0${secs}`;
-  } else {
-    appendSeconds.textContent = secs;
-  }
+  appendZero(secs, appendSeconds);
+  appendZero(mins, appendMinutes);
+  appendZero(hours, appendHours);
+}
 
-  if( mins < 10) {
-    appendMinutes.textContent = `0${mins}`;
+function appendZero( times, appendTimes ) { 
+  if( times < 10) { 
+    appendTimes.textContent = `0${times}`;
   } else {
-    appendMinutes.textContent = mins;
+    appendTimes.textContent = times;
   }
-
-  if( hours < 10) {
-    appendHours.textContent = `0${hours}`;
-  } else {
-    appendHours.textContent = hours;
-  } 
 }
 
 function start() {
