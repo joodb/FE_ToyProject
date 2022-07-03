@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To eat bugs</title>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        
+        #canvas {
+            border: 1px solid #828282;
+        }
+        
+        #canvasBg {
+            position: absolute;
+            top: 500;
+            left: 500;
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="canvasBg" width="300" height="300"></canvas>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script src="tile.js"></script>
+    <script src="bug.js"></script>
+    <script src="worm.js"></script>
+
+    <script>
+        // canvas 설정
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d'); // 캔버스의 2d 요소들을 꺼내온다.
+        const cWidth = canvas.width; // 캔버스 넓이
+        const cHeight = canvas.height; // 캔버스 높이
+        
+        // canvasBg 설정
+        const canvasBg = document.querySelector('#canvasBg');
+        const ctxBg = canvasBg.getContext('2d'); 
+        
+        // tile 설정
+        const tileSize = 10;
+        const tileWidth = cWidth / tileSize; // 가로에 놓일 타일의 개수
+        const tileHeight = cHeight / tileSize; // 세로에 놓일 타일의 개수
+        
+        // score 초기화
+        let score = 0;
+
+        // score 그리는 함수
+        const renderScore = () => {
+            ctx.font = '15px Helvetica'; 
+            ctx.fillStyle = "black";
+            ctx.fillText(`SCORE : ${score}`, 0, 20);
+        }
+
+        const renderGameOver = () => {
+            cancelAnimationFrame(playId);
+
+            ctx.font = '30px Helvetica';
+            ctx.fillStyle = "red";
+            // text의 수직 기준점
+            ctx.textBaseline = "middle";
+            // text의 수평 기준점
+            ctx.textAlign = "center";
+            ctx.fillText('GAME OVER', cWidth / 2, cHeight / 2);
+        }
+
+        
+        const worm = new Worm();
+        const bug = new Bug();
+        
+        document.addEventListener('keydown', (e) => {
+            if( e.key ==="ArrowUp" || e.key ==="ArrowDown" || e.key ==="ArrowRight" || e.key ==="ArrowLeft") {
+                worm.checkDirection(e.key);
+            }
+        })
+        
+        let playId;
+        playId = requestAnimationFrame(function playGame(){
+            
+            setTimeout( () => { // worm의 속도 늦춰주기
+                playId = requestAnimationFrame(playGame);
+                ctx.clearRect(0, 0, cWidth, cHeight); // 렌더링 될 때마다 캔버스 초기화 
+                renderScore();
+                worm.moveWorm();
+                worm.renderWorm();
+                bug.renderBug();
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
+
+

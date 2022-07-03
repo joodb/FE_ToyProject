@@ -1,0 +1,15 @@
+class Bug {
+    constructor() {
+        this.pos = new Tile(5, 5);
+    }
+
+    renderBug(){
+        this.pos.renderImg();
+    }
+
+    moveBug() {
+        const col = Math.floor(Math.random() * (tileWidth - 2) + 1) ;
+        const row = Math.floor(Math.random() * (tileHeight - 2) + 1) ;
+        this.pos = new Tile(col, row);
+    }
+}
